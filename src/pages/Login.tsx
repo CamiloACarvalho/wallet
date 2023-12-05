@@ -50,6 +50,7 @@ function Login() {
 
   return (
     <form onSubmit={ handleSubmit }>
+      <h1>Hello, TrybeWallet!</h1>
       <h3>Login</h3>
       <label htmlFor="email">
         Insira seu e-mail
