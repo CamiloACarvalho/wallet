@@ -5,4 +5,8 @@ import { mainReducer } from './reducers';
 
 const store = createStore(mainReducer, composeWithDevTools());
 
+if (window.Cypress) {
+  window.store = store;
+}
+
 export default store;

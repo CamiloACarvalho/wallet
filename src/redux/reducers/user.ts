@@ -11,8 +11,7 @@ function userRedux(state = INITIAL_STATE, action: any) {
   switch (action.type) {
     case USER_DATA:
       return {
-        ...state,
-        ...action.payload,
+        email: action.payload,
       };
     default:
       return state;

@@ -13,6 +13,6 @@ import walletRedux from './wallet';
 
 // Fazendo a combinação deles
 export const mainReducer = combineReducers({
-  userRedux,
-  walletRedux,
+  user: userRedux,
+  wallet: walletRedux,
 });
