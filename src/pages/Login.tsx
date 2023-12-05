@@ -1,9 +1,16 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
+// Como vamos precisar 'despachar' as informações para outras páginas, vamos importar o useDispatch
+import { useDispatch } from 'react-redux';
+import { userData } from '../redux/actions';
+
 function Login() {
   // Criando o link para navegar para outra página quando fizer o login
   const navigate = useNavigate();
+
+  // Transformando a função useDispacth para uma constante
+  const dispacth = useDispatch();
 
   // Validando o login e senha
   const [email, setEmail] = useState('');
@@ -38,6 +45,7 @@ function Login() {
   const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     navigate('/carteira');
+    dispacth(userData(email));
   };
 
   return (
