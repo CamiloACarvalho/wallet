@@ -1,6 +1,6 @@
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
 // Importar a action da pessoa usuária
-import { WALLET_DATA } from '../actions';
+import { WALLET_DATA, ADD_EXPENSE } from '../actions';
 
 // Definindo o estado inicial
 const INITIAL_STATE = {
@@ -15,7 +15,11 @@ function walletRedux(state = INITIAL_STATE, action: any) {
     case WALLET_DATA:
       return {
         ...state,
-        ...action.payload,
+        currencies: action.payload,
+      };
+    case ADD_EXPENSE:
+      return {
+
       };
     default:
       return state;
