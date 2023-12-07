@@ -8,10 +8,10 @@ const URL = 'https://economia.awesomeapi.com.br/json/all';
 
 const initialState = {
   value: '',
-  currency: '',
+  description: '',
+  currency: 'USD',
   method: '',
   tag: '',
-  description: '',
 };
 
 function WalletForm() {

@@ -18,8 +18,9 @@ function Header() {
       <p data-testid="email-field">
         {`Usuário: ${email}` }
       </p>
-      <p data-testid="total-field">
-        {`Total: R$ ${totalValue.toFixed(2)}` }
+      <p>
+        Total: R$
+        <span data-testid="total-field">{`${totalValue.toFixed(2)}`}</span>
       </p>
       <p data-testid="header-currency-field">
         BRL
