@@ -19,7 +19,8 @@ function walletRedux(state = INITIAL_STATE, action: any) {
       };
     case ADD_EXPENSE:
       return {
-
+        ...state,
+        expenses: action.payload,
       };
     default:
       return state;
