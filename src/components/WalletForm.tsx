@@ -1,20 +1,42 @@
+import { ThunkDispatch } from 'redux-thunk';
+import { AnyAction } from 'redux';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchData } from '../redux/actions';
-import walletRedux from '../redux/reducers/wallet';
+import { fetchData, expenseData } from '../redux/actions';
+
+const URL = 'https://economia.awesomeapi.com.br/json/all';
+
+const initialState = {
+  value: '',
+  currency: '',
+  method: '',
+  tag: '',
+  description: '',
+};
 
 function WalletForm() {
   // Criei um estado para o formulário
-  const [form, setForm] = useState({
-    value: '',
-    currency: '',
-    method: '',
-    tag: '',
-    spending: '',
-  });
+  const [form, setForm] = useState(initialState);
+
+  // Tipei o estado do Redux
+  type ReduxState = {
+    api: {
+      code: string,
+      codein: string,
+      name: string,
+      high: string,
+      low: string,
+      varBid: string,
+      pctChange: string,
+      bid: string,
+      ask: string,
+      timestamp: string,
+      create_date: string,
+    },
+  };
 
   // O useDispatch é para disparar a action que vai fazer a requisição
-  const dispatch = useDispatch();
+  const dispatch: ThunkDispatch<ReduxState, null, AnyAction> = useDispatch();
   // O useSelector é para pegar o estado que vai ser atualizado com os dados da requisição
   const currencies = useSelector((state: any) => state.wallet.currencies);
 
@@ -24,20 +46,28 @@ function WalletForm() {
   }, [dispatch]);
 
   // Fiz a desestruturação do estado do formulário
-  const { value, currency, method, tag, spending } = form;
+  const { value, currency, method, tag, description } = form;
 
   // Essa função é para atualizar o estado do formulário a medida que vão sendo feitas as alterações
   const handleChange = (
     { target }: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
+    // Renomeando a propriedade name do target para targetName
     const { name: targetName } = target;
-    setForm({ ...form, [targetName]: value });
+    setForm({ ...form, [targetName]: target.value });
   };
 
   // Criando uma função para enviar as informações para a localStorage
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    dispatch(walletRedux(form));
+    const response = await fetch(URL);
+    const data = await response.json();
+    const expensive = {
+      ...form,
+      exchangeRates: data,
+    };
+    dispatch(expenseData(expensive));
+    setForm(initialState);
   };
 
   return (
@@ -110,11 +140,11 @@ function WalletForm() {
       <label htmlFor="spending">
         Despesas:
         <input
-          name="spending"
+          name="description"
           data-testid="description-input"
           type="text"
           placeholder="Despesas"
-          value={ spending }
+          value={ description }
           onChange={ handleChange }
         />
       </label>
