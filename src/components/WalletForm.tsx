@@ -10,8 +10,8 @@ const initialState = {
   value: '',
   description: '',
   currency: 'USD',
-  method: '',
-  tag: '',
+  method: 'Dinheiro',
+  tag: 'Aliementação',
 };
 
 function WalletForm() {

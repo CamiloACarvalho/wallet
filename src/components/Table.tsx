@@ -1,8 +1,20 @@
 import { useSelector } from 'react-redux';
 
+// type MainState = {
+//   user: {
+//     email: string,
+//   };
+//   wallet: {
+//     currencies: [],
+//     expenses: [],
+//     editor: false,
+//     idToEdit: 0,
+//   };
+// };
+
 function Table() {
   // Obtendo o estado global
-  const wallet = useSelector((state: any) => state.wallet);
+  const { expenses } = useSelector((state: any) => state.wallet);
 
   return (
     // Criando a tabela
@@ -24,17 +36,22 @@ function Table() {
       </thead>
       {/* Criando o corpo da tabela */}
       <tbody>
-        {wallet.map((expense: any) => (
+        {expenses.map((expense: any) => (
           <tr key={ expense.id }>
             {/* Criando as colunas do corpo */}
             <td>{ expense.description }</td>
             <td>{ expense.tag }</td>
             <td>{ expense.method }</td>
-            <td>{ expense.value.toFixed(2) }</td>
-            <td>{ expense.exchangeRates[expense.currency].name }</td>
+            <td>{ Number(expense.value).toFixed(2) }</td>
+            <td>{ expense.exchangeRates[expense.currency].code }</td>
             <td>
-              { expense.exchangeRates[expense.currency].ask.toFixed(2) }
+              { Number(expense.exchangeRates[expense.currency].ask).toFixed(2) }
             </td>
+            <td>
+              { Number(expense.value * expense.exchangeRates[expense.currency].ask)
+                .toFixed(2) }
+            </td>
+            <td>{ expense.exchangeRates[expense.currency].name }</td>
           </tr>
         ))}
       </tbody>
