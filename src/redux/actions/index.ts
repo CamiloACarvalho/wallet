@@ -70,10 +70,9 @@ export const expenseData = (payload: any) => {
 };
 
 // Action para deletar uma despesa
-export const deleteExpense = (payload: any) => {
+export const deleteExpense = (id: number) => {
   return {
     type: DELETE_EXPENSE,
-    payload,
+    payload: id,
   };
 };
-
