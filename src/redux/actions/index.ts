@@ -9,6 +9,7 @@ export const WALLET_DATA = 'WALLET_DATA';
 export const API_DATA = 'API_DATA';
 export const ERROR = 'ERROR';
 export const ADD_EXPENSE = 'ADD_EXPENSE';
+export const DELETE_EXPENSE = 'DELETE_EXPENSE';
 
 const URL = 'https://economia.awesomeapi.com.br/json/all';
 
@@ -67,3 +68,12 @@ export const expenseData = (payload: any) => {
     payload,
   };
 };
+
+// Action para deletar uma despesa
+export const deleteExpense = (payload: any) => {
+  return {
+    type: DELETE_EXPENSE,
+    payload,
+  };
+};
+

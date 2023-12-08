@@ -1,6 +1,6 @@
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
 // Importar a action da pessoa usuária
-import { WALLET_DATA, ADD_EXPENSE } from '../actions';
+import { WALLET_DATA, ADD_EXPENSE, DELETE_EXPENSE } from '../actions';
 
 // Definindo o estado inicial
 const INITIAL_STATE = {
@@ -15,12 +15,20 @@ function walletRedux(state = INITIAL_STATE, action: any) {
     case WALLET_DATA:
       return {
         ...state,
+        // Aqui estamos salvando as moedas no estado global
         currencies: action.payload,
       };
     case ADD_EXPENSE:
       return {
         ...state,
+        // Aqui estamos adicionando um novo objeto ao array de despesas, com o id sendo o tamanho do array de despesas, e o resto das informações sendo o payload
         expenses: [...state.expenses, { id: state.expenses.length, ...action.payload }],
+      };
+    case DELETE_EXPENSE:
+      return {
+        ...state,
+        // Aqui estamos filtrando o array de despesas, removendo o objeto que tenha o id igual ao payload
+        expenses: state.expenses.filter((expense: any) => expense.id !== action.payload),
       };
     default:
       return state;

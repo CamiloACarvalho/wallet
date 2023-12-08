@@ -1,20 +1,12 @@
 import { useSelector } from 'react-redux';
 
-// type MainState = {
-//   user: {
-//     email: string,
-//   };
-//   wallet: {
-//     currencies: [],
-//     expenses: [],
-//     editor: false,
-//     idToEdit: 0,
-//   };
-// };
-
 function Table() {
   // Obtendo o estado global
   const { expenses } = useSelector((state: any) => state.wallet);
+
+  const handleClick = () => {
+    // Criando a função para excluir uma despesa
+  };
 
   return (
     // Criando a tabela
@@ -38,7 +30,7 @@ function Table() {
       <tbody>
         {expenses.map((expense: any) => (
           <tr key={ expense.id }>
-            {/* Criando as colunas do corpo */}
+            {/* Preenchedo as colunas do corpo */}
             <td>{ expense.description }</td>
             <td>{ expense.tag }</td>
             <td>{ expense.method }</td>
@@ -52,6 +44,20 @@ function Table() {
                 .toFixed(2) }
             </td>
             <td>{ expense.exchangeRates[expense.currency].name }</td>
+            <td>
+              <button
+                type="button"
+              >
+                Editar
+              </button>
+              <button
+                data-testid="delete-btn"
+                type="button"
+                onClick={ handleClick }
+              >
+                Excluir
+              </button>
+            </td>
           </tr>
         ))}
       </tbody>
