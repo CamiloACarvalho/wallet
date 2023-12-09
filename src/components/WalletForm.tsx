@@ -2,7 +2,7 @@ import { ThunkDispatch } from 'redux-thunk';
 import { AnyAction } from 'redux';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchData, expenseData } from '../redux/actions';
+import { fetchData, expenseData, editing } from '../redux/actions';
 
 const URL = 'https://economia.awesomeapi.com.br/json/all';
 
@@ -39,6 +39,10 @@ function WalletForm() {
   const dispatch: ThunkDispatch<ReduxState, null, AnyAction> = useDispatch();
   // O useSelector é para pegar o estado que vai ser atualizado com os dados da requisição
   const currencies = useSelector((state: any) => state.wallet.currencies);
+  // O useSelector é para pegar o estado que vai ser atualizado com os dados da requisição
+  const changeButton = useSelector((state: any) => state.wallet.editor);
+
+  const [isTrue, setIsTrue] = useState(changeButton);
 
   // O useEffect vai fazer a requisição da API quando o componente for montado
   useEffect(() => {
@@ -62,10 +66,17 @@ function WalletForm() {
     event.preventDefault();
     const response = await fetch(URL);
     const data = await response.json();
+
     const expensive = {
       ...form,
       exchangeRates: data,
     };
+
+    if (isTrue) {
+      dispatch(editing(expensive));
+      setIsTrue(false);
+    }
+
     dispatch(expenseData(expensive));
     setForm(initialState);
   };
@@ -153,7 +164,7 @@ function WalletForm() {
         type="submit"
         data-testid="button-submit"
       >
-        Adicionar despesa
+        {isTrue ? 'Editar despesa' : 'Adicionar despesa'}
       </button>
     </form>
   );

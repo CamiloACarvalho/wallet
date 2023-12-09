@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteExpense, isEdit } from '../redux/actions';
 
@@ -6,14 +7,18 @@ function Table() {
   const { expenses } = useSelector((state: any) => state.wallet);
   const dispatch = useDispatch();
 
+  // Criando um useState para armazenar
+  const [changeButton, setChangeButton] = useState(false);
+
   const handleDel = (id: number) => {
   // "Dispachando" a ação de deletar uma despesa
     dispatch(deleteExpense(id));
   };
 
   const handleEdit = (id: number) => {
-    // Dispachando a ação de editar uma despesa
-    dispatch(isEdit(true, id));
+  // Dispachando a ação de editar uma despesa
+    setChangeButton(true);
+    dispatch(isEdit(changeButton, id));
   };
 
   return (
@@ -56,7 +61,10 @@ function Table() {
               <button
                 data-testid="edit-btn"
                 type="button"
-                onClick={ () => handleEdit(expense.idToEdit) }
+                onClick={ () => {
+                  setChangeButton(true);
+                  handleEdit(expense.idToEdit);
+                } }
               >
                 Editar
               </button>

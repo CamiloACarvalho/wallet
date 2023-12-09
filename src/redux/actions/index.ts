@@ -86,7 +86,7 @@ export const isEdit = (editForm: boolean, id: number) => {
     type: IS_EDIT,
     // Payload é o valor que será passado para o reducer
     payload: {
-      editForm,
+      editor: editForm,
       idToEdit: id,
     },
   };
