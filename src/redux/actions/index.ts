@@ -10,6 +10,8 @@ export const API_DATA = 'API_DATA';
 export const ERROR = 'ERROR';
 export const ADD_EXPENSE = 'ADD_EXPENSE';
 export const DELETE_EXPENSE = 'DELETE_EXPENSE';
+export const EDIT_EXPENSE = 'EDIT_EXPENSE';
+export const IS_EDIT = 'IS_EDIT';
 
 const URL = 'https://economia.awesomeapi.com.br/json/all';
 
@@ -74,5 +76,27 @@ export const deleteExpense = (id: number) => {
   return {
     type: DELETE_EXPENSE,
     payload: id,
+  };
+};
+
+// Action para editar uma despesa
+export const isEdit = (editForm: boolean, id: number) => {
+  return {
+    // Type é o nome da action
+    type: IS_EDIT,
+    // Payload é o valor que será passado para o reducer
+    payload: {
+      editForm,
+      idToEdit: id,
+    },
+  };
+};
+
+export const editing = (expense: any) => {
+  return {
+    // Type é o nome da action
+    type: EDIT_EXPENSE,
+    // Payload é o valor que será passado para o reducer
+    payload: expense,
   };
 };

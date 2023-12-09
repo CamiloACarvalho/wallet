@@ -1,14 +1,19 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteExpense } from '../redux/actions';
+import { deleteExpense, isEdit } from '../redux/actions';
 
 function Table() {
   // Obtendo o estado global
   const { expenses } = useSelector((state: any) => state.wallet);
   const dispatch = useDispatch();
 
-  const handleClick = (id: number) => {
-    // Criando a função para excluir uma despesa
+  const handleDel = (id: number) => {
+  // "Dispachando" a ação de deletar uma despesa
     dispatch(deleteExpense(id));
+  };
+
+  const handleEdit = (id: number) => {
+    // Dispachando a ação de editar uma despesa
+    dispatch(isEdit(true, id));
   };
 
   return (
@@ -49,14 +54,16 @@ function Table() {
             <td>{ expense.exchangeRates[expense.currency].name }</td>
             <td>
               <button
+                data-testid="edit-btn"
                 type="button"
+                onClick={ () => handleEdit(expense.idToEdit) }
               >
                 Editar
               </button>
               <button
                 data-testid="delete-btn"
                 type="button"
-                onClick={ () => handleClick(expense.id) }
+                onClick={ () => handleDel(expense.id) }
               >
                 Excluir
               </button>
