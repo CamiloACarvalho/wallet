@@ -39,9 +39,9 @@ function walletRedux(state = INITIAL_STATE, action: any) {
       return {
         ...state,
         // Aqui estamos salvando o valor do payload no editor
-        editor: action.payload,
+        editor: action.payload.editor,
         // Aqui estamos salvando o valor do id no idToEdit
-        idToEdit: action.idToEdit,
+        idToEdit: action.payload.idToEdit,
       };
     case EDIT_EXPENSE:
       return {
@@ -51,6 +51,7 @@ function walletRedux(state = INITIAL_STATE, action: any) {
         // Se for, retornamos o objeto com as informações do payload. Se não for, retornamos o objeto sem alterações
         expenses: state.expenses.map((expense: any) => {
           if (expense.id === state.idToEdit) {
+            console.log(action.payload);
             return {
               ...expense,
               ...action.payload,

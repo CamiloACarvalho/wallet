@@ -11,7 +11,7 @@ const initialState = {
   description: '',
   currency: 'USD',
   method: 'Dinheiro',
-  tag: 'Aliementação',
+  tag: 'Alimentação',
 };
 
 function WalletForm() {
@@ -40,9 +40,7 @@ function WalletForm() {
   // O useSelector é para pegar o estado que vai ser atualizado com os dados da requisição
   const currencies = useSelector((state: any) => state.wallet.currencies);
   // O useSelector é para pegar o estado que vai ser atualizado com os dados da requisição
-  const changeButton = useSelector((state: any) => state.wallet.editor);
-
-  const [isTrue, setIsTrue] = useState(changeButton);
+  const editor = useSelector((state: any) => state.wallet.editor);
 
   // O useEffect vai fazer a requisição da API quando o componente for montado
   useEffect(() => {
@@ -72,12 +70,11 @@ function WalletForm() {
       exchangeRates: data,
     };
 
-    if (isTrue) {
+    if (editor) {
       dispatch(editing(expensive));
-      setIsTrue(false);
+    } else {
+      dispatch(expenseData(expensive));
     }
-
-    dispatch(expenseData(expensive));
     setForm(initialState);
   };
 
@@ -164,7 +161,7 @@ function WalletForm() {
         type="submit"
         data-testid="button-submit"
       >
-        {isTrue ? 'Editar despesa' : 'Adicionar despesa'}
+        { editor ? 'Editar despesa' : 'Adicionar despesa'}
       </button>
     </form>
   );
