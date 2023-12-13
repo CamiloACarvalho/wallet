@@ -40,19 +40,21 @@ function Table() {
         {expenses.map((expense: any) => (
           <tr key={ expense.id }>
             {/* Preenchedo as colunas do corpo */}
-            <td>{ expense.description }</td>
-            <td>{ expense.tag }</td>
-            <td>{ expense.method }</td>
-            <td>{ Number(expense.value).toFixed(2) }</td>
-            <td>{ expense.exchangeRates[expense.currency].code }</td>
-            <td>
+            <td data-testid="description">{ expense.description }</td>
+            <td data-testid="tag">{ expense.tag }</td>
+            <td data-testid="method">{ expense.method }</td>
+            <td data-testid="value">{ Number(expense.value).toFixed(2) }</td>
+            <td data-testid="code">
+              { expense.exchangeRates[expense.currency].code }
+            </td>
+            <td data-testid="rate">
               { Number(expense.exchangeRates[expense.currency].ask).toFixed(2) }
             </td>
-            <td>
+            <td data-testid="currency">
               { Number(expense.value * expense.exchangeRates[expense.currency].ask)
                 .toFixed(2) }
             </td>
-            <td>{ expense.exchangeRates[expense.currency].name }</td>
+            <td data-testid="name">{ expense.exchangeRates[expense.currency].name }</td>
             <td>
               <button
                 data-testid="edit-btn"
