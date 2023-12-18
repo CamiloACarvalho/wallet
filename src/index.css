@@ -1,13 +1,35 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --white: #fff;
+
+  --background: rgba(48, 48, 48, 0.63);
+
+  --gray-100: #eff1f4;
+  --gray-200: #ced4da;
+  --gray-500: #565f6a;
+  --gray-700: #3e4854;
+
+  --purple-100: #ad08c3;
+  --purple-500: #780da3;
+  --purple-700: #77037f;
+
+  --blue-300: #075bbb;
+  --blue-500: #094493;
+
+  --row-1: #bd88ff96;
+  --row-2: #6c00ef96;
+
+  --shadow: #0000001a;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
 }
+
+body {
+  background-image: url('../public/wallpaper.png');
+}
+

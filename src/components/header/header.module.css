@@ -1,0 +1,42 @@
+.header {
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--background);
+  height: 100px;
+  margin-bottom: 30px;
+}
+
+.div {
+  display: flex;
+  align-items: center;
+}
+
+.perfil {
+  width: 30px;
+  margin: 10px;
+}
+
+.user {
+  font-size: 1.25rem;
+  color: var(--gray-200);
+  display: flex;
+  margin-right: 20px;
+}
+
+.value {
+  font-size: 1.25rem;
+  color: var(--gray-200);
+  margin-right: 7px;
+}
+
+.exchange {
+  width: 50px;
+  margin: 20px;
+}
+
+.money {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--blue-300);
+}

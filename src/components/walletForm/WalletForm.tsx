@@ -2,7 +2,8 @@ import { ThunkDispatch } from 'redux-thunk';
 import { AnyAction } from 'redux';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchData, expenseData, editing } from '../redux/actions';
+import { fetchData, expenseData, editing } from '../../redux/actions';
+import style from './walletForm.module.css';
 
 const URL = 'https://economia.awesomeapi.com.br/json/all';
 
@@ -79,13 +80,20 @@ function WalletForm() {
   };
 
   return (
-    <form onSubmit={ handleSubmit }>
+    <form
+      className={ style.form }
+      onSubmit={ handleSubmit }
+    >
 
       {/* O formulário vai ter um input para cada informação que vai ser enviada para a API */}
       {/* Esse input vai capturar o valor da despesa */}
-      <label htmlFor="value">
-        Valor:
+      <label
+        className={ style.label }
+        htmlFor="value"
+      >
+        Valor
         <input
+          className={ style.inputValue }
           name="value"
           data-testid="value-input"
           type="number"
@@ -95,9 +103,13 @@ function WalletForm() {
         />
       </label>
       {/* Esse input vai capturar a moeda da despesa. Observe que criamos um array com as moedas para conversão */}
-      <label htmlFor="currency">
-        Moeda:
+      <label
+        className={ style.label }
+        htmlFor="currency"
+      >
+        Moeda
         <select
+          className={ style.selectCoin }
           name="currency"
           data-testid="currency-input"
           value={ currency }
@@ -113,11 +125,15 @@ function WalletForm() {
             </option>
           ))}
         </select>
-        {/* Esse input vai capturar o método de pagamento da despesa */}
       </label>
-      <label htmlFor="method">
-        Método de pagamento:
+      {/* Esse input vai capturar o método de pagamento da despesa */}
+      <label
+        htmlFor="method"
+        className={ style.label }
+      >
+        Forma de pagamento
         <select
+          className={ style.selectMethod }
           name="method"
           data-testid="method-input"
           value={ method }
@@ -129,9 +145,13 @@ function WalletForm() {
         </select>
       </label>
       {/* Esse input vai capturar a categoria da despesa */}
-      <label htmlFor="tag">
-        Categoria:
+      <label
+        htmlFor="tag"
+        className={ style.label }
+      >
+        Categoria
         <select
+          className={ style.selectTag }
           name="tag"
           data-testid="tag-input"
           value={ tag }
@@ -145,9 +165,13 @@ function WalletForm() {
         </select>
       </label>
       {/* Esse input vai capturar a descrição da despesa */}
-      <label htmlFor="spending">
-        Despesas:
+      <label
+        htmlFor="spending"
+        className={ style.label }
+      >
+        Despesas
         <input
+          className={ style.inputDescription }
           name="description"
           data-testid="description-input"
           type="text"
@@ -158,6 +182,7 @@ function WalletForm() {
       </label>
       {/* O botão vai enviar os dados para localStore */}
       <button
+        className={ style.buttonSubmit }
         type="submit"
         data-testid="button-submit"
       >

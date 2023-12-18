@@ -1,0 +1,110 @@
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.3rem;
+  color: var(--gray-200);
+}
+
+.inputValue,
+.inputDescription {
+  display: flex;
+  text-align: center;
+  width: 150px;
+  height: 35px;
+  border-radius: 7px;
+  border: 2px solid var(--purple-100);
+  font-size: 1.25rem;
+  color: var(--gray-200);
+  background-color: var(--background);
+  margin-right: 30px;
+  margin-top: 10px;
+}
+
+/* Oculta as setas de up e down no input do tipo number */
+.inputValue::-webkit-outer-spin-button,
+.inputValue::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Garante que o input não tenha setas em navegadores Firefox */
+.inputValue[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.inputDescription {
+  width: 250px;
+}
+
+/* Estilizando o elemento select */
+.selectCoin,
+.selectMethod,
+.selectTag {
+  display: flex;
+  text-align: center;
+  height: 35px;
+  margin-top: 10px;
+  margin-right: 30px;
+  border-radius: 7px;
+  border: 2px solid var(--purple-100);
+  font-size: 1.25rem;
+  color: var(--gray-200);
+  background-color: var(--background);
+}
+
+.selectCoin {
+  width: 150px;
+}
+
+.selectTag {
+  width: 200px;
+}
+
+.selectMethod {
+  width: 250px;
+}
+/* Estilizando as opções do select */
+.selectCoin option,
+.selectMethod option,
+.selectTag option {
+  font-size: 1rem;
+  font-size: 1.25rem;
+  color: var(--gray-200);
+}
+
+/* Exemplo de alteração de cor do fundo quando o select estiver focado */
+/* .selectCoin:focus,
+.selectMethod:focus,
+.selectTag:focus {
+  outline: none;
+  border-color: #4CAF50;
+  box-shadow: 0 0 10px rgba(0, 128, 0, 0.2);
+} */
+
+.buttonSubmit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  border-radius: 7px;
+  border: 2px solid var(--purple-500);
+  background-color: var(--purple-100);
+  color: var(--white);
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  height: 50px;
+  width: 200px;
+}
+
+.buttonSubmit:hover {
+  background-color: var(--purple-700);
+  border: 2px solid var(--purple-700);
+}

@@ -1,6 +1,6 @@
-import Header from '../components/Header';
-import Table from '../components/Table';
-import WalletForm from '../components/WalletForm';
+import Header from '../components/header/Header';
+import Table from '../components/table/Table';
+import WalletForm from '../components/walletForm/WalletForm';
 
 function Wallet() {
   return (
