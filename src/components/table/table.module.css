@@ -1,20 +1,8 @@
 .table {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 20px;
-}
-
-.table {
-  display: flex;
-}
-
-.head {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 20px;
+  display: table;
+  width: 95%;
+  table-layout:fixed;
+  margin-left: 50px;
 }
 
 .description,
@@ -24,63 +12,44 @@
 .value,
 .exchangeRates,
 .rate,
-.last,
-.payment{
-  font-size: 1.5rem;
+.payment {
+  font-size: 1.3rem;
   color: var(--gray-200);
-  align-items: flex-start;
-  padding: 0.3rem 1rem;
+  padding: 0.6rem;
   background-color: var(--background);
   border-radius: 7px;
-  margin: 2px;
 }
 
-.description,
-.descriptionValue {
-  width: 210px;
-}
-
-.tag,
-.tagValue {
-  width: 210px;
-}
-
-.payment,
+.descriptionValue,
+.tagValue,
+.coinValue,
+.exchangeValue,
+.valueValue,
+.exchangeRatesValue,
+.rateValue,
 .paymentValue {
-  width: 300px;
+  font-size: 1.15rem;
+  color: var(--gray-200);
+  background-color: var(--background);
 }
-
-.value,
-.valueValue {
-  width: 120px;
-}
-
-.coin,
-.coinValue {
-  width: 120px;
-}
-
-.exchange,
-.exchangeValue {
-  width: 120px;
-}
-
-.rate,
-.rateValue {
-  width: 250px;
-}
-
-.exchangeRates,
-.exchangeRatesValue {
-  width: 300px;
-}
-
+ 
 .body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px;
+  display: table-row-group;
+}
+ 
+/* Ajustes responsivos com media queries */
+@media (max-width: 600px) {
+ .descriptionValue,
+ .tagValue,
+ .coinValue,
+ .exchangeValue,
+ .valueValue,
+ .exchangeRatesValue,
+ .rateValue,
+ .paymentValue {
+   width: auto;
+   font-size: 1rem;
+  }
 }
 
 .even{
@@ -99,24 +68,10 @@
   margin-left: 5px;
 }
 
-.descriptionValue,
-.tagValue,
-.coinValue,
-.exchangeValue,
-.valueValue,
-.exchangeRatesValue,
-.rateValue,
-.paymentValue {
-  font-size: 1.125rem;
-  color: var(--gray-200);
-  padding: 0.3rem 1.3rem;
-  background-color: var(--background);
-}
 
 .btn {
   justify-content: center;
   align-items: center;
-  padding: 0.3rem 1.3rem;
 }
 
 .editBtn, .delBtn {
